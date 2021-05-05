@@ -6,12 +6,12 @@ This folder contains the exact same model in three different file formats. If yo
 
 IMF provides semantics that enable mapping between AML, AAS and IMFML in a unified manner
 
-Quetions
+## Quetions
 1. What is the boundary between AML and CAEX (IEC 62424)?
    1. AML is built on the CAEX format
    1. Being AML compliant requires using AML libraries in CAEX
 
-Proposals
+## Proposals
 1. AspectObjects are AAS SubModels of kind "Instance". 
 1. AspectObjects are AML Instances 
 1. IMF types are AAS SubModels of kind "Template" with a semantic ID to a IMF RDL
@@ -19,7 +19,7 @@ Proposals
 1. IMF types are AML Roles. This also means that the serialization from AAS to AML has to be IMF aware
 1. It is possible to annotate existing AML with IMF semantics, as an alternative to AAS semantics, to convert to AAS and IMFML
 
-Decisions
+## Decisions
 1. Do we utilize AAS Views in any way?
 1. Should AML be asset or aspect oriented?
 
