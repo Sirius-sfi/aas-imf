@@ -1,0 +1,90 @@
+PREFIX tpl:		<https://ottr.xyz/lib/eng/mel/>
+PREFIX pav:		<http://purl.org/pav/>
+PREFIX upp:		<http://data.aibel.com/asset/equinor/AskjaUPP/>
+PREFIX rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl:		<http://www.w3.org/2002/07/owl#>
+PREFIX lis:		<http://standards.iso.org/iso/15926/part14/>
+PREFIX ottr:	<http://ns.ottr.xyz/0.4/>
+PREFIX xsd:		<http://www.w3.org/2001/XMLSchema#>
+PREFIX skos:	<http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX prov:	<http://www.w3.org/ns/prov#>
+PREFIX pca:		<http://data.posccaesar.org/rdl/>
+PREFIX pca-tpl:	<http://data.posccaesar.org/tpl/>
+PREFIX uom:		<http://data.posccaesar.org/uom/>
+PREFIX o-rdf:	<http://tpl.ottr.xyz/rdf/0.1/>
+PREFIX o-rdfs:	<http://tpl.ottr.xyz/rdfs/0.2/>
+
+pca-tpl:Quantification[ ottr:IRI ?entity, ! ottr:IRI ?quantity_prop, xsd:double ?numeric_value, ! ottr:IRI ?unit_of_measure ] :: {
+	ottr:Triple(?entity, ?quantity_prop, _:quantity),
+	ottr:Triple(_:quantity, uom:hasNumericValue, ?numeric_value),
+	ottr:Triple(_:quantity, uom:hasUnitOfMeasure, ?unit_of_measure)
+} .
+
+pca-tpl:RDS360674 [ ottr:IRI ?entity , xsd:double ?pressure_barg ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS360674, ?pressure_barg, uom:barg )
+} .
+
+pca-tpl:RDS357074 [ ottr:IRI ?entity , xsd:double ?pressure_barg ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS357074, ?pressure_barg, uom:barg )
+} .
+
+pca-tpl:RDS357119 [ ottr:IRI ?entity , xsd:double ?temp_degc ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS357119, ?temp_degc, uom:degc )
+} .
+
+pca-tpl:RDS7356152 [ ottr:IRI ?entity , xsd:double ?capacity_m3 ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS7356152, ?capacity_m3, uom:m3 )
+} .
+
+pca-tpl:RDS357209 [ ottr:IRI ?entity , xsd:double ?inside_diameter_mm ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS357209, ?inside_diameter_mm, uom:millimeter )
+} .
+
+pca-tpl:RDS357254 [ ottr:IRI ?entity , xsd:double ?length_tan_tan_mm ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS357254, ?length_tan_tan_mm, uom:millimeter )
+} .
+
+pca-tpl:RDS349874 [ ottr:IRI ?entity , xsd:double ?footprint_m2 ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS349874, ?footprint_m2, uom:m2 )
+} .
+
+pca-tpl:RDS7285516 [ ottr:IRI ?entity , xsd:double ?net_dry_weight_kg ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS7285516, ?net_dry_weight_kg, uom:kilogram )
+} .
+
+pca-tpl:RDS8798340 [ ottr:IRI ?entity , xsd:double ?gross_dry_weight_kg ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS8798340, ?gross_dry_weight_kg, uom:kilogram )
+} .
+
+pca-tpl:RDS358379 [ ottr:IRI ?entity , xsd:double ?content_weight_kg ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS358379, ?content_weight_kg, uom:kilogram )
+} .
+
+pca-tpl:RDS1059668431 [ ottr:IRI ?entity , xsd:double ?flow_rate_m3_per_hr ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS1059668431, ?flow_rate_m3_per_hr, uom:m3_per_hr )
+} .
+
+pca-tpl:RDS361259 [ ottr:IRI ?entity , xsd:double ?shaft_power_kw ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS361259, ?shaft_power_kw, uom:kilowatt )
+} .
+
+pca-tpl:RDS13281757 [ ottr:IRI ?entity , xsd:double ?rated_power_kw ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS13281757, ?rated_power_kw, uom:kilowatt )
+} .
+
+pca-tpl:RDS373094 [ ottr:IRI ?entity , xsd:double ?length_mm ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS373094, ?length_mm, uom:millimeter )
+} .
+
+pca-tpl:RDS361709 [ ottr:IRI ?entity , xsd:double ?width_mm ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS361709, ?width_mm, uom:millimeter )
+} .
+
+pca-tpl:RDS357704 [ ottr:IRI ?entity , xsd:double ?height_mm ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS357704, ?height_mm, uom:millimeter )
+} .
+
+pca-tpl:RDS14119225 [ ottr:IRI ?entity , xsd:double ?heat_transfer_area_m2 ] :: {
+	pca-tpl:Quantification(?entity, pca:RDS14119225, ?heat_transfer_area_m2, uom:m2 )
+} .

@@ -1,0 +1,121 @@
+@prefix tpl:   <https://ottr.xyz/lib/eng/mel/> .
+@prefix upp:   <http://data.aibel.com/asset/equinor/AskjaUPP/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ottr:  <http://ns.ottr.xyz/0.4/> .
+@prefix pca:   <http://data.posccaesar.org/rdl/> .
+
+[ ottr:of      tpl:ShellAndTubeHeatExchanger ;
+  ottr:values  ( upp:A-24HA001 pca:RDS419084 "88.54"^^<http://www.w3.org/2001/XMLSchema#double> "88.36" "71.4"^^<http://www.w3.org/2001/XMLSchema#double> "20.0"^^<http://www.w3.org/2001/XMLSchema#double> "6450.0"^^<http://www.w3.org/2001/XMLSchema#double> "697.0"^^<http://www.w3.org/2001/XMLSchema#double> "1026.4"^^<http://www.w3.org/2001/XMLSchema#double> "17400.0"^^<http://www.w3.org/2001/XMLSchema#double> "1520.0"^^<http://www.w3.org/2001/XMLSchema#double> "26.448"^^<http://www.w3.org/2001/XMLSchema#double> "24300.0"^^<http://www.w3.org/2001/XMLSchema#double> "27944.999999999996"^^<http://www.w3.org/2001/XMLSchema#double> "12250.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:CentrifugalCompressor ;
+  ottr:values  ( upp:A-27KZ002 pca:RDS417194 ottr:none ottr:none ottr:none ottr:none ottr:none ottr:none "6200.0"^^<http://www.w3.org/2001/XMLSchema#double> "4400.0"^^<http://www.w3.org/2001/XMLSchema#double> "3600.0"^^<http://www.w3.org/2001/XMLSchema#double> "27.28"^^<http://www.w3.org/2001/XMLSchema#double> "75000.0"^^<http://www.w3.org/2001/XMLSchema#double> "86250.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:PlateAndFrameHeatExchanger ;
+  ottr:values  ( upp:A-27HB001 pca:RDS441674 ottr:none ottr:none ottr:none ottr:none ottr:none ottr:none "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "500.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "0.5"^^<http://www.w3.org/2001/XMLSchema#double> "1250.0"^^<http://www.w3.org/2001/XMLSchema#double> "1437.5"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:VerticalSuspendedCentrifugalPump ;
+  ottr:values  ( upp:A-50PH001B pca:RDS866114 ottr:none ottr:none ottr:none "2500.0"^^<http://www.w3.org/2001/XMLSchema#double> "950.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "1400.0"^^<http://www.w3.org/2001/XMLSchema#double> "1400.0"^^<http://www.w3.org/2001/XMLSchema#double> "40000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1.96"^^<http://www.w3.org/2001/XMLSchema#double> "16000.0"^^<http://www.w3.org/2001/XMLSchema#double> "18400.0"^^<http://www.w3.org/2001/XMLSchema#double> "5000.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:ElectricalHeater ;
+  ottr:values  ( upp:A-27FE001 pca:RDS14070475 "185.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "-46.0"^^<http://www.w3.org/2001/XMLSchema#double> "4000.0"^^<http://www.w3.org/2001/XMLSchema#double> "830.0"^^<http://www.w3.org/2001/XMLSchema#double> "1500.0"^^<http://www.w3.org/2001/XMLSchema#double> "3.32"^^<http://www.w3.org/2001/XMLSchema#double> "3174.0"^^<http://www.w3.org/2001/XMLSchema#double> "3650.1"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:FlareTip ;
+  ottr:values  ( upp:A-43FX001 pca:RDS446129 ottr:none ottr:none ottr:none ottr:none "610.0"^^<http://www.w3.org/2001/XMLSchema#double> "3000.0"^^<http://www.w3.org/2001/XMLSchema#double> "0.3721"^^<http://www.w3.org/2001/XMLSchema#double> "835.0"^^<http://www.w3.org/2001/XMLSchema#double> "960.2499999999999"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:CentrifugalPumpSkid ;
+  ottr:values  ( upp:A-50PA001B pca:RDS14196773 "17.0"^^<http://www.w3.org/2001/XMLSchema#double> "FV" "-10.0"^^<http://www.w3.org/2001/XMLSchema#double> "700.0"^^<http://www.w3.org/2001/XMLSchema#double> "150.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "3200.0"^^<http://www.w3.org/2001/XMLSchema#double> "1400.0"^^<http://www.w3.org/2001/XMLSchema#double> "1600.0"^^<http://www.w3.org/2001/XMLSchema#double> "4.48"^^<http://www.w3.org/2001/XMLSchema#double> "3500.0"^^<http://www.w3.org/2001/XMLSchema#double> "4024.9999999999995"^^<http://www.w3.org/2001/XMLSchema#double> "50.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:ShellAndTubeHeatExchanger ;
+  ottr:values  ( upp:A-27HA002 pca:RDS419084 "163.5"^^<http://www.w3.org/2001/XMLSchema#double> "163.05" "137.7"^^<http://www.w3.org/2001/XMLSchema#double> "90.0"^^<http://www.w3.org/2001/XMLSchema#double> "1218.0"^^<http://www.w3.org/2001/XMLSchema#double> "188.0"^^<http://www.w3.org/2001/XMLSchema#double> "62.7"^^<http://www.w3.org/2001/XMLSchema#double> "8600.0"^^<http://www.w3.org/2001/XMLSchema#double> "920.0"^^<http://www.w3.org/2001/XMLSchema#double> "7.912"^^<http://www.w3.org/2001/XMLSchema#double> "5890.0"^^<http://www.w3.org/2001/XMLSchema#double> "6773.499999999999"^^<http://www.w3.org/2001/XMLSchema#double> "1260.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:CentrifugalPumpSkid ;
+  ottr:values  ( upp:A-27PA001A pca:RDS14196773 ottr:none ottr:none ottr:none "92.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none ottr:none "2000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1.0"^^<http://www.w3.org/2001/XMLSchema#double> "1370.0"^^<http://www.w3.org/2001/XMLSchema#double> "1575.4999999999998"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:InlineMixer ;
+  ottr:values  ( upp:A-24CJ001 pca:RDS43167562195 ottr:none ottr:none ottr:none "1400.0"^^<http://www.w3.org/2001/XMLSchema#double> "700.0"^^<http://www.w3.org/2001/XMLSchema#double> "700.0"^^<http://www.w3.org/2001/XMLSchema#double> "0.98"^^<http://www.w3.org/2001/XMLSchema#double> "595.0"^^<http://www.w3.org/2001/XMLSchema#double> "684.25"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:VerticalPressureVessel ;
+  ottr:values  ( upp:A-24VG001 pca:RDS291959 "157.0"^^<http://www.w3.org/2001/XMLSchema#double> "FV" "-46.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "1700.0"^^<http://www.w3.org/2001/XMLSchema#double> "4200.0"^^<http://www.w3.org/2001/XMLSchema#double> "2.89"^^<http://www.w3.org/2001/XMLSchema#double> "28700.0"^^<http://www.w3.org/2001/XMLSchema#double> "33005.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:ChlorinationSystem ;
+  ottr:values  ( upp:A-47XX001 pca:RDS276569 "17.0"^^<http://www.w3.org/2001/XMLSchema#double> "FV" "-10.0"^^<http://www.w3.org/2001/XMLSchema#double> "5500.0"^^<http://www.w3.org/2001/XMLSchema#double> "3400.0"^^<http://www.w3.org/2001/XMLSchema#double> "3200.0"^^<http://www.w3.org/2001/XMLSchema#double> "18.7"^^<http://www.w3.org/2001/XMLSchema#double> "5700.0"^^<http://www.w3.org/2001/XMLSchema#double> "6554.999999999999"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:ShellAndTubeHeatExchanger ;
+  ottr:values  ( upp:A-27HA001 pca:RDS419084 "33.636"^^<http://www.w3.org/2001/XMLSchema#double> "33.364" "84.5"^^<http://www.w3.org/2001/XMLSchema#double> "20.0"^^<http://www.w3.org/2001/XMLSchema#double> "14028.0"^^<http://www.w3.org/2001/XMLSchema#double> "817.0"^^<http://www.w3.org/2001/XMLSchema#double> "1246.0"^^<http://www.w3.org/2001/XMLSchema#double> "15885.0"^^<http://www.w3.org/2001/XMLSchema#double> "1750.0"^^<http://www.w3.org/2001/XMLSchema#double> "27.79875"^^<http://www.w3.org/2001/XMLSchema#double> "25610.0"^^<http://www.w3.org/2001/XMLSchema#double> "29451.499999999996"^^<http://www.w3.org/2001/XMLSchema#double> "16450.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:CentrifugalPumpSkid ;
+  ottr:values  ( upp:A-43PA001 pca:RDS14196773 ottr:none ottr:none ottr:none ottr:none ottr:none ottr:none "2000.0"^^<http://www.w3.org/2001/XMLSchema#double> "2000.0"^^<http://www.w3.org/2001/XMLSchema#double> "2000.0"^^<http://www.w3.org/2001/XMLSchema#double> "4.0"^^<http://www.w3.org/2001/XMLSchema#double> "1300.0"^^<http://www.w3.org/2001/XMLSchema#double> "1494.9999999999998"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:VerticalPressureVessel ;
+  ottr:values  ( upp:A-27VG001 pca:RDS291959 "100.0"^^<http://www.w3.org/2001/XMLSchema#double> "FV" "-46.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "3500.0"^^<http://www.w3.org/2001/XMLSchema#double> "4800.0"^^<http://www.w3.org/2001/XMLSchema#double> "12.25"^^<http://www.w3.org/2001/XMLSchema#double> "77600.0"^^<http://www.w3.org/2001/XMLSchema#double> "89240.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:BackwashFilter ;
+  ottr:values  ( upp:A-50XX001 pca:RDS4316489015 "17.0"^^<http://www.w3.org/2001/XMLSchema#double> "FV" "-10.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "6000.0"^^<http://www.w3.org/2001/XMLSchema#double> "3000.0"^^<http://www.w3.org/2001/XMLSchema#double> "5200.0"^^<http://www.w3.org/2001/XMLSchema#double> "18.0"^^<http://www.w3.org/2001/XMLSchema#double> "18000.0"^^<http://www.w3.org/2001/XMLSchema#double> "20700.0"^^<http://www.w3.org/2001/XMLSchema#double> "4700.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:PlateAndFrameHeatExchanger ;
+  ottr:values  ( upp:A-27HB002 pca:RDS441674 ottr:none ottr:none ottr:none ottr:none ottr:none ottr:none "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "500.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "0.5"^^<http://www.w3.org/2001/XMLSchema#double> "1250.0"^^<http://www.w3.org/2001/XMLSchema#double> "1437.5"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:CentrifugalPumpSkid ;
+  ottr:values  ( upp:A-20PZ001B pca:RDS14196773 ottr:none ottr:none ottr:none ottr:none ottr:none ottr:none "8500.0"^^<http://www.w3.org/2001/XMLSchema#double> "2400.0"^^<http://www.w3.org/2001/XMLSchema#double> "2400.0"^^<http://www.w3.org/2001/XMLSchema#double> "20.4"^^<http://www.w3.org/2001/XMLSchema#double> "26500.0"^^<http://www.w3.org/2001/XMLSchema#double> "30474.999999999996"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:CentrifugalPumpSkid ;
+  ottr:values  ( upp:A-20PZ001A pca:RDS14196773 ottr:none ottr:none ottr:none ottr:none ottr:none ottr:none "8500.0"^^<http://www.w3.org/2001/XMLSchema#double> "2400.0"^^<http://www.w3.org/2001/XMLSchema#double> "2400.0"^^<http://www.w3.org/2001/XMLSchema#double> "20.4"^^<http://www.w3.org/2001/XMLSchema#double> "26500.0"^^<http://www.w3.org/2001/XMLSchema#double> "30474.999999999996"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:CentrifugalPumpSkid ;
+  ottr:values  ( upp:A-50PA001A pca:RDS14196773 "17.0"^^<http://www.w3.org/2001/XMLSchema#double> "FV" "-10.0"^^<http://www.w3.org/2001/XMLSchema#double> "700.0"^^<http://www.w3.org/2001/XMLSchema#double> "150.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "3200.0"^^<http://www.w3.org/2001/XMLSchema#double> "1400.0"^^<http://www.w3.org/2001/XMLSchema#double> "1600.0"^^<http://www.w3.org/2001/XMLSchema#double> "4.48"^^<http://www.w3.org/2001/XMLSchema#double> "3500.0"^^<http://www.w3.org/2001/XMLSchema#double> "4024.9999999999995"^^<http://www.w3.org/2001/XMLSchema#double> "50.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:InlineMixer ;
+  ottr:values  ( upp:A-24CJ002 pca:RDS43167562195 ottr:none ottr:none ottr:none "1400.0"^^<http://www.w3.org/2001/XMLSchema#double> "700.0"^^<http://www.w3.org/2001/XMLSchema#double> "700.0"^^<http://www.w3.org/2001/XMLSchema#double> "0.98"^^<http://www.w3.org/2001/XMLSchema#double> "595.0"^^<http://www.w3.org/2001/XMLSchema#double> "684.25"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:CentrifugalPumpSkid ;
+  ottr:values  ( upp:A-27PA001B pca:RDS14196773 ottr:none ottr:none ottr:none "92.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none ottr:none "2000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "2.0"^^<http://www.w3.org/2001/XMLSchema#double> "1370.0"^^<http://www.w3.org/2001/XMLSchema#double> "1575.4999999999998"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:CentrifugalCompressor ;
+  ottr:values  ( upp:A-27KZ001 pca:RDS417194 ottr:none ottr:none ottr:none ottr:none ottr:none ottr:none "6200.0"^^<http://www.w3.org/2001/XMLSchema#double> "4400.0"^^<http://www.w3.org/2001/XMLSchema#double> "3600.0"^^<http://www.w3.org/2001/XMLSchema#double> "27.28"^^<http://www.w3.org/2001/XMLSchema#double> "75000.0"^^<http://www.w3.org/2001/XMLSchema#double> "86250.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:VerticalPressureVessel ;
+  ottr:values  ( upp:A-20VA001 pca:RDS291959 "FV"^^<http://www.w3.org/2001/XMLSchema#double> "100.0" "-46.0"^^<http://www.w3.org/2001/XMLSchema#double> "80.0"^^<http://www.w3.org/2001/XMLSchema#double> "3500.0"^^<http://www.w3.org/2001/XMLSchema#double> "6600.0"^^<http://www.w3.org/2001/XMLSchema#double> "12.25"^^<http://www.w3.org/2001/XMLSchema#double> "106600.0"^^<http://www.w3.org/2001/XMLSchema#double> "122589.99999999999"^^<http://www.w3.org/2001/XMLSchema#double> "80000.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:VerticalPressureVessel ;
+  ottr:values  ( upp:A-24VG002 pca:RDS291959 "157.0"^^<http://www.w3.org/2001/XMLSchema#double> "FV" "-46.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "2500.0"^^<http://www.w3.org/2001/XMLSchema#double> "4400.0"^^<http://www.w3.org/2001/XMLSchema#double> "6.25"^^<http://www.w3.org/2001/XMLSchema#double> "53300.0"^^<http://www.w3.org/2001/XMLSchema#double> "61294.99999999999"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:CentrifugalPumpSkid ;
+  ottr:values  ( upp:A-24PA001B pca:RDS14196773 ottr:none ottr:none ottr:none "5.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none ottr:none "2000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "2.0"^^<http://www.w3.org/2001/XMLSchema#double> "1220.0"^^<http://www.w3.org/2001/XMLSchema#double> "1403.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .
+
+[ ottr:of      tpl:VerticalSuspendedCentrifugalPump ;
+  ottr:values  ( upp:A-50PH001A pca:RDS866114 ottr:none ottr:none ottr:none "2500.0"^^<http://www.w3.org/2001/XMLSchema#double> "950.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "1400.0"^^<http://www.w3.org/2001/XMLSchema#double> "1400.0"^^<http://www.w3.org/2001/XMLSchema#double> "40000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1.96"^^<http://www.w3.org/2001/XMLSchema#double> "16000.0"^^<http://www.w3.org/2001/XMLSchema#double> "18400.0"^^<http://www.w3.org/2001/XMLSchema#double> "5000.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:KnockOutDrum ;
+  ottr:values  ( upp:A-43VD001 pca:RDS5785737 "12.0"^^<http://www.w3.org/2001/XMLSchema#double> "FV" "-101.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none "12000.0"^^<http://www.w3.org/2001/XMLSchema#double> "3900.0"^^<http://www.w3.org/2001/XMLSchema#double> "46.8"^^<http://www.w3.org/2001/XMLSchema#double> "37000.0"^^<http://www.w3.org/2001/XMLSchema#double> "42550.0"^^<http://www.w3.org/2001/XMLSchema#double> "63000.0"^^<http://www.w3.org/2001/XMLSchema#double> )
+] .
+
+[ ottr:of      tpl:CentrifugalPumpSkid ;
+  ottr:values  ( upp:A-24PA001A pca:RDS14196773 ottr:none ottr:none ottr:none "5.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none ottr:none "2000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "1000.0"^^<http://www.w3.org/2001/XMLSchema#double> "2.0"^^<http://www.w3.org/2001/XMLSchema#double> "1220.0"^^<http://www.w3.org/2001/XMLSchema#double> "1403.0"^^<http://www.w3.org/2001/XMLSchema#double> ottr:none )
+] .

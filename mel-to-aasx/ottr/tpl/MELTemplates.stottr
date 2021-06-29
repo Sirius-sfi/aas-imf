@@ -1,0 +1,200 @@
+PREFIX pav: <http://purl.org/pav/>
+PREFIX o-rdf: <http://tpl.ottr.xyz/rdf/0.1/>
+PREFIX o-rdfs: <http://tpl.ottr.xyz/rdfs/0.2/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX pca-tpl: <http://data.posccaesar.org/tpl/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pca: <http://data.posccaesar.org/rdl/>
+PREFIX tpl: <https://ottr.xyz/lib/eng/mel/>
+PREFIX uom: <http://data.posccaesar.org/uom/>
+PREFIX upp: <http://data.aibel.com/asset/equinor/AskjaUPP/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX lis: <http://standards.iso.org/iso/15926/part14/>
+PREFIX ottr: <http://ns.ottr.xyz/0.4/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+tpl:VerticalPressureVessel [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?capacity_m3 , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS7356152(?tag_number, ?capacity_m3),
+	pca-tpl:RDS357209(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357254(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:CentrifugalPumpSkid [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?flow_rate_1_m3_per_hr , ? xsd:double ?shaft_power_kw , ? xsd:double ?rated_power_kw , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS1059668431(?tag_number, ?flow_rate_1_m3_per_hr),
+	pca-tpl:RDS361259(?tag_number, ?shaft_power_kw),
+	pca-tpl:RDS13281757(?tag_number, ?rated_power_kw),
+	pca-tpl:RDS373094(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS361709(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357704(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:InlineMixer [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS373094(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS361709(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357704(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:ShellAndTubeHeatExchanger [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?temp_2_degc , ? xsd:double ?flow_rate_1_m3_per_hr , ? xsd:double ?flow_rate_2_m3_per_hr , ? xsd:double ?heat_transfer_surface_area_m2 , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS357119(?tag_number, ?temp_2_degc),
+	pca-tpl:RDS1059668431(?tag_number, ?flow_rate_1_m3_per_hr),
+	pca-tpl:RDS1059668431(?tag_number, ?flow_rate_2_m3_per_hr),
+	pca-tpl:RDS14119225(?tag_number, ?heat_transfer_surface_area_m2),
+	pca-tpl:RDS357254(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS357209(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:PlateAndFrameHeatExchanger [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?temp_2_degc , ? xsd:double ?flow_rate_1_m3_per_hr , ? xsd:double ?flow_rate_2_m3_per_hr , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS357119(?tag_number, ?temp_2_degc),
+	pca-tpl:RDS1059668431(?tag_number, ?flow_rate_1_m3_per_hr),
+	pca-tpl:RDS1059668431(?tag_number, ?flow_rate_2_m3_per_hr),
+	pca-tpl:RDS373094(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS361709(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357704(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:CentrifugalCompressor [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?flow_rate_1_m3_per_hr , ? xsd:double ?shaft_power_kw , ? xsd:double ?rated_power_kw , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS1059668431(?tag_number, ?flow_rate_1_m3_per_hr),
+	pca-tpl:RDS361259(?tag_number, ?shaft_power_kw),
+	pca-tpl:RDS13281757(?tag_number, ?rated_power_kw),
+	pca-tpl:RDS373094(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS361709(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357704(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:ElectricalHeater [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS373094(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS361709(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357704(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:VerticalSuspendedCentrifugalPump [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?flow_rate_1_m3_per_hr , ? xsd:double ?shaft_power_kw , ? xsd:double ?rated_power_kw , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS1059668431(?tag_number, ?flow_rate_1_m3_per_hr),
+	pca-tpl:RDS361259(?tag_number, ?shaft_power_kw),
+	pca-tpl:RDS13281757(?tag_number, ?rated_power_kw),
+	pca-tpl:RDS373094(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS361709(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357704(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:ChlorinationSystem [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS373094(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS361709(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357704(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:KnockOutDrum [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?capacity_m3 , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS7356152(?tag_number, ?capacity_m3),
+	pca-tpl:RDS357254(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS357209(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:BackwashFilter [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?flow_rate_1_m3_per_hr , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS1059668431(?tag_number, ?flow_rate_1_m3_per_hr),
+	pca-tpl:RDS373094(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS361709(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357704(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .
+
+tpl:FlareTip [ ottr:IRI ?tag_number , ottr:IRI ?class_of_inanimate_physical_object , ? xsd:double ?pressure_1_barg , ? xsd:double ?pressure_2_barg , ? xsd:double ?temp_1_degc , ? xsd:double ?l_or_tt_mm , ? xsd:double ?w_or_id_mm , ? xsd:double ?h_or_tt_mm , ? xsd:double ?footprint_m2 , ? xsd:double ?net_dry_weight_kg , ? xsd:double ?gross_dry_weight_kg , ? xsd:double ?content_weight_kg ] :: {
+	o-rdf:Type(?tag_number, ?class_of_inanimate_physical_object),
+	pca-tpl:RDS360674(?tag_number, ?pressure_1_barg),
+	pca-tpl:RDS357074(?tag_number, ?pressure_2_barg),
+	pca-tpl:RDS357119(?tag_number, ?temp_1_degc),
+	pca-tpl:RDS373094(?tag_number, ?l_or_tt_mm),
+	pca-tpl:RDS361709(?tag_number, ?w_or_id_mm),
+	pca-tpl:RDS357704(?tag_number, ?h_or_tt_mm),
+	pca-tpl:RDS349874(?tag_number, ?footprint_m2),
+	pca-tpl:RDS7285516(?tag_number, ?net_dry_weight_kg),
+	pca-tpl:RDS8798340(?tag_number, ?gross_dry_weight_kg),
+	pca-tpl:RDS358379(?tag_number, ?content_weight_kg)
+} .

@@ -360,3 +360,13 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Visual Studio Code settings:
+.vscode/
+
+# IntelliJ settings:
+.idea/
+
+# Maven generated files:
+target/
+*.iml

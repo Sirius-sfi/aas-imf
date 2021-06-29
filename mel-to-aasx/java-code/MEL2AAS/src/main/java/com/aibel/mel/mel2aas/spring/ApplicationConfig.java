@@ -1,0 +1,53 @@
+package com.aibel.mel.mel2aas.spring;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class ApplicationConfig {
+
+    @Value("${melws.prefixFile}")
+    private String prefixFile;
+
+    @Value("${melws.tocFile}")
+    private String tocFile;
+
+    @Value("${melws.mapFile}")
+    private String mapFile;
+
+    @Value("${melws.tplRegFile}")
+    private String tplRegFile;
+
+    @Value("${melws.lutraCommand}")
+    private String lutraCommand;
+
+    @Value("${melws.pathToTemplateLibrary}")
+    private String pathToTemplateLibrary;
+
+    @Value("${melws.rdfToAasxCommand}")
+    private String rdfToAasxCommand;
+
+    public String getPrefixFile() {
+        return prefixFile;
+    }
+
+    public String getTocFile() {
+        return tocFile;
+    }
+
+    public String getMapFile() {
+        return mapFile;
+    }
+
+    public String getTplRegFile() {
+        return tplRegFile;
+    }
+
+    public String getLutraCommand() { return lutraCommand; }
+
+    public String getPathToTemplateLibrary() { return pathToTemplateLibrary; }
+
+    public String getRdfToAasxCommand() {
+        return rdfToAasxCommand;
+    }
+}

@@ -1,0 +1,33 @@
+PREFIX pav: <http://purl.org/pav/>
+PREFIX o-rdf: <http://tpl.ottr.xyz/rdf/0.1/>
+PREFIX o-rdfs: <http://tpl.ottr.xyz/rdfs/0.2/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX pca-tpl: <http://data.posccaesar.org/tpl/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pca: <http://data.posccaesar.org/rdl/>
+PREFIX tpl: <https://ottr.xyz/lib/eng/mel/>
+PREFIX uom: <http://data.posccaesar.org/uom/>
+PREFIX upp: <http://data.aibel.com/asset/equinor/AskjaUPP/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX lis: <http://standards.iso.org/iso/15926/part14/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+SELECT ?tag_number ?class_of_inanimate_physical_object ?pressure_1_barg ?pressure_2_barg ?temp_1_degc ?capacity_m3 ?l_or_tt_mm ?w_or_id_mm ?footprint_m2 ?net_dry_weight_kg ?gross_dry_weight_kg ?content_weight_kg
+WHERE {
+	[] ottr:of <https://ottr.xyz/lib/eng/mel/KnockOutDrum> ;
+	   ottr:values/rdf:first ?tag_number ;
+	   ottr:values/rdf:rest/rdf:first ?class_of_inanimate_physical_object ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:first ?pressure_1_barg ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:rest/rdf:first ?pressure_2_barg ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:first ?temp_1_degc ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:first ?capacity_m3 ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:first ?l_or_tt_mm ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:first ?w_or_id_mm ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:first ?footprint_m2 ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:first ?net_dry_weight_kg ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:first ?gross_dry_weight_kg ;
+	   ottr:values/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:rest/rdf:first ?content_weight_kg ;
+	.
+}

@@ -1,0 +1,277 @@
+PREFIX pav:		<http://purl.org/pav/>
+PREFIX o-rdf:	<http://tpl.ottr.xyz/rdf/0.1/>
+PREFIX o-rdfs:	<http://tpl.ottr.xyz/rdfs/0.2/>
+PREFIX owl:		<http://www.w3.org/2002/07/owl#>
+PREFIX pca-tpl:	<http://data.posccaesar.org/tpl/>
+PREFIX xsd:		<http://www.w3.org/2001/XMLSchema#>
+PREFIX skos:	<http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pca:		<http://data.posccaesar.org/rdl/>
+PREFIX tpl:		<https://ottr.xyz/lib/eng/mel/>
+PREFIX uom:		<http://data.posccaesar.org/uom/>
+PREFIX upp:		<http://data.aibel.com/asset/equinor/AskjaUPP/>
+PREFIX rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX lis:		<http://standards.iso.org/iso/15926/part14/>
+PREFIX ottr:	<http://ns.ottr.xyz/0.4/>
+PREFIX prov:	<http://www.w3.org/ns/prov#>
+PREFIX mel:		<http://data.aibel.com/ontology/mel/>
+
+tpl:MelRow [
+	!  ottr:IRI		?tag_number_entity,
+	!? ottr:IRI		?skid_ref_entity,
+	?  xsd:string	?tag_status,
+	?  xsd:string	?building_block,
+	?  xsd:string	?discipline,
+	?  xsd:string	?cost_code_cor,
+	?  xsd:string	?tag_number,
+	?  xsd:string	?top_tag,
+	?  xsd:string	?skid_ref,
+	?  xsd:string	?po_package_number,
+	?  xsd:string	?system_number,
+	?  xsd:string	?equinor_equipment_category_1_4,
+	?  xsd:string	?equipment_type_description,
+	?  xsd:string	?area,
+	?  xsd:string	?sub_area,
+	?  xsd:string	?function_area,
+	?  xsd:string	?l_or_tt_mm,
+	?  xsd:string	?w_or_id_mm,
+	?  xsd:string	?h_or_tt_mm,
+	?  xsd:string	?footprint_m2,
+	?  xsd:string	?modification_phase_code,
+	?  xsd:string	?modification_cunstruction_code,
+	?  xsd:string	?modification_handling_code,
+	?  xsd:string	?allowance_pct,
+	?  xsd:string	?net_dry_weight_kg,
+	?  xsd:string	?gross_dry_weight_kg,
+	?  xsd:string	?content_weight_kg,
+	?  xsd:string	?dry_cog_east_mm,
+	?  xsd:string	?dry_cog_north_mm,
+	?  xsd:string	?dry_cog_elevation_mm,
+	?  xsd:string	?price_source,
+	?  xsd:string	?cost_proj_currency,
+	?  xsd:string	?cost_date,
+	?  xsd:string	?exch_rate,
+	?  xsd:string	?nok,
+	?  xsd:string	?pressure_1_barg,
+	?  xsd:string	?pressure_2_barg,
+	?  xsd:string	?temp_1_degc,
+	?  xsd:string	?temp_2_degc,
+	?  xsd:string	?flow_rate_1_m3_per_hr,
+	?  xsd:string	?flow_rate_2_m3_per_hr,
+	?  xsd:string	?capacity_m3,
+	?  xsd:string	?heat_transfer_medium_type,
+	?  xsd:string	?speed_rpm,
+	?  xsd:string	?heat_exchanged_per_unit_kw,
+	?  xsd:string	?shaft_power_kw,
+	?  xsd:string	?rated_power_kw,
+	?  xsd:string	?heat_transfer_surface_area_m2,
+	?  xsd:string	?material_1,
+	?  xsd:string	?material_2,
+	?  xsd:string	?reference_or_source,
+	?  xsd:string	?reference_doc_dwg_pid_etc,
+	?  xsd:string	?risk_weight_accuracy,
+	?  xsd:string	?risk_footprint_accuracy,
+	?  xsd:string	?risk_design_basis,
+	?  xsd:string	?risk_comments,
+	?  xsd:string	?remarks
+] :: {
+	o-rdf:Type(?tag_number_entity, mel:MelRow),
+	tpl:TagSkidRef(?tag_number_entity, ?skid_ref_entity),
+	tpl:MelColumn(?tag_number_entity, mel:Tag_Status, ?tag_status), tpl:MelColumnDef(mel:Tag_Status, 0),
+	tpl:MelColumn(?tag_number_entity, mel:Building_Block, ?building_block), tpl:MelColumnDef(mel:Building_Block, 1),
+	tpl:MelColumn(?tag_number_entity, mel:Discipline, ?discipline), tpl:MelColumnDef(mel:Discipline, 2),
+	tpl:MelColumn(?tag_number_entity, mel:Cost_Code_COR, ?cost_code_cor), tpl:MelColumnDef(mel:Cost_Code_COR, 3),
+	tpl:MelColumn(?tag_number_entity, mel:Tag_Number, ?tag_number), tpl:MelColumnDef(mel:Tag_Number, 4),
+	tpl:MelColumn(?tag_number_entity, mel:Top_Tag, ?top_tag), tpl:MelColumnDef(mel:Top_Tag, 5),
+	tpl:MelColumn(?tag_number_entity, mel:Skid_Ref, ?skid_ref), tpl:MelColumnDef(mel:Skid_Ref, 6),
+	tpl:MelColumn(?tag_number_entity, mel:PO_Package_Number, ?po_package_number), tpl:MelColumnDef(mel:PO_Package_Number, 7),
+	tpl:MelColumn(?tag_number_entity, mel:System_Number, ?system_number), tpl:MelColumnDef(mel:System_Number, 8),
+	tpl:MelColumn(?tag_number_entity, mel:Equinor_Equipment_Category_1_4, ?equinor_equipment_category_1_4), tpl:MelColumnDef(mel:Equinor_Equipment_Category_1_4, 9),
+	tpl:MelColumn(?tag_number_entity, mel:Equipment_Type_Description, ?equipment_type_description), tpl:MelColumnDef(mel:Equipment_Type_Description, 10),
+	tpl:MelColumn(?tag_number_entity, mel:Area, ?area), tpl:MelColumnDef(mel:Area, 11),
+	tpl:MelColumn(?tag_number_entity, mel:Sub_Area, ?sub_area), tpl:MelColumnDef(mel:Sub_Area, 12),
+	tpl:MelColumn(?tag_number_entity, mel:Function_Area, ?function_area), tpl:MelColumnDef(mel:Function_Area, 13),
+	tpl:MelColumn(?tag_number_entity, mel:L_or_TT_mm, ?l_or_tt_mm), tpl:MelColumnDef(mel:L_or_TT_mm, 14),
+	tpl:MelColumn(?tag_number_entity, mel:W_or_ID_mm, ?w_or_id_mm), tpl:MelColumnDef(mel:W_or_ID_mm, 15),
+	tpl:MelColumn(?tag_number_entity, mel:H_or_TT_mm, ?h_or_tt_mm), tpl:MelColumnDef(mel:H_or_TT_mm, 16),
+	tpl:MelColumn(?tag_number_entity, mel:Footprint_m2, ?footprint_m2), tpl:MelColumnDef(mel:Footprint_m2, 17),
+	tpl:MelColumn(?tag_number_entity, mel:Modification_Phase_Code, ?modification_phase_code), tpl:MelColumnDef(mel:Modification_Phase_Code, 18),
+	tpl:MelColumn(?tag_number_entity, mel:Modification_Construction_Code, ?modification_cunstruction_code), tpl:MelColumnDef(mel:Modification_Construction_Code, 19),
+	tpl:MelColumn(?tag_number_entity, mel:Modification_Handling_Code, ?modification_handling_code), tpl:MelColumnDef(mel:Modification_Handling_Code, 20),
+	tpl:MelColumn(?tag_number_entity, mel:Allowance_pct, ?allowance_pct), tpl:MelColumnDef(mel:Allowance_pct, 21),
+	tpl:MelColumn(?tag_number_entity, mel:Net_Dry_Weight_kg, ?net_dry_weight_kg), tpl:MelColumnDef(mel:Net_Dry_Weight_kg, 22),
+	tpl:MelColumn(?tag_number_entity, mel:Gross_Dry_Weight_kg, ?gross_dry_weight_kg), tpl:MelColumnDef(mel:Gross_Dry_Weight_kg, 23),
+	tpl:MelColumn(?tag_number_entity, mel:Content_Weight_kg, ?content_weight_kg), tpl:MelColumnDef(mel:Content_Weight_kg, 24),
+	tpl:MelColumn(?tag_number_entity, mel:Dry_CoG_East_mm, ?dry_cog_east_mm), tpl:MelColumnDef(mel:Dry_CoG_East_mm, 25),
+	tpl:MelColumn(?tag_number_entity, mel:Dry_CoG_North_mm, ?dry_cog_north_mm), tpl:MelColumnDef(mel:Dry_CoG_North_mm, 26),
+	tpl:MelColumn(?tag_number_entity, mel:Dry_CoG_Elevation_mm, ?dry_cog_elevation_mm), tpl:MelColumnDef(mel:Dry_CoG_Elevation_mm, 27),
+	tpl:MelColumn(?tag_number_entity, mel:Price_Source, ?price_source), tpl:MelColumnDef(mel:Price_Source, 28),
+	tpl:MelColumn(?tag_number_entity, mel:Cost_Proj_currency, ?cost_proj_currency), tpl:MelColumnDef(mel:Cost_Proj_currency, 29),
+	tpl:MelColumn(?tag_number_entity, mel:Cost_Date, ?cost_date), tpl:MelColumnDef(mel:Cost_Date, 30),
+	tpl:MelColumn(?tag_number_entity, mel:Exch_rate, ?exch_rate), tpl:MelColumnDef(mel:Exch_rate, 31),
+	tpl:MelColumn(?tag_number_entity, mel:NOK, ?nok), tpl:MelColumnDef(mel:NOK, 32),
+	tpl:MelColumn(?tag_number_entity, mel:Pressure_1_barg, ?pressure_1_barg), tpl:MelColumnDef(mel:Pressure_1_barg, 33),
+	tpl:MelColumn(?tag_number_entity, mel:Pressure_2_barg, ?pressure_2_barg), tpl:MelColumnDef(mel:Pressure_2_barg, 34),
+	tpl:MelColumn(?tag_number_entity, mel:Temp_1_degC, ?temp_1_degc), tpl:MelColumnDef(mel:Temp_1_degC, 35),
+	tpl:MelColumn(?tag_number_entity, mel:Temp_2_degC, ?temp_2_degc), tpl:MelColumnDef(mel:Temp_2_degC, 36),
+	tpl:MelColumn(?tag_number_entity, mel:Flow_rate_1_m3_per_hr, ?flow_rate_1_m3_per_hr), tpl:MelColumnDef(mel:Flow_rate_1_m3_per_hr, 37),
+	tpl:MelColumn(?tag_number_entity, mel:Flow_rate_2_m3_per_hr, ?flow_rate_2_m3_per_hr), tpl:MelColumnDef(mel:Flow_rate_2_m3_per_hr, 38),
+	tpl:MelColumn(?tag_number_entity, mel:Capacity_m3, ?capacity_m3), tpl:MelColumnDef(mel:Capacity_m3, 39),
+	tpl:MelColumn(?tag_number_entity, mel:Heat_transfer_medium_type, ?heat_transfer_medium_type), tpl:MelColumnDef(mel:Heat_transfer_medium_type, 40),
+	tpl:MelColumn(?tag_number_entity, mel:Speed_RPM, ?speed_rpm), tpl:MelColumnDef(mel:Speed_RPM, 41),
+	tpl:MelColumn(?tag_number_entity, mel:Heat_Exchanged_per_Unit_kW, ?heat_exchanged_per_unit_kw), tpl:MelColumnDef(mel:Heat_Exchanged_per_Unit_kW, 42),
+	tpl:MelColumn(?tag_number_entity, mel:Shaft_Power_kW, ?shaft_power_kw), tpl:MelColumnDef(mel:Shaft_Power_kW, 43),
+	tpl:MelColumn(?tag_number_entity, mel:Rated_Power_kW, ?rated_power_kw), tpl:MelColumnDef(mel:Rated_Power_kW, 44),
+	tpl:MelColumn(?tag_number_entity, mel:Heat_Transfer_Surface_Area_m2, ?heat_transfer_surface_area_m2), tpl:MelColumnDef(mel:Heat_Transfer_Surface_Area_m2, 45),
+	tpl:MelColumn(?tag_number_entity, mel:Material_1, ?material_1), tpl:MelColumnDef(mel:Material_1, 46),
+	tpl:MelColumn(?tag_number_entity, mel:Material_2, ?material_2), tpl:MelColumnDef(mel:Material_2, 47),
+	tpl:MelColumn(?tag_number_entity, mel:Reference_or_Source, ?reference_or_source), tpl:MelColumnDef(mel:Reference_or_Source, 48),
+	tpl:MelColumn(?tag_number_entity, mel:Reference_doc_dwg_PID_etc, ?reference_doc_dwg_pid_etc), tpl:MelColumnDef(mel:Reference_doc_dwg_PID_etc, 49),
+	tpl:MelColumn(?tag_number_entity, mel:Risk_Weight_accuracy, ?risk_weight_accuracy), tpl:MelColumnDef(mel:Risk_Weight_accuracy, 50),
+	tpl:MelColumn(?tag_number_entity, mel:Risk_Footprint_accuracy, ?risk_footprint_accuracy), tpl:MelColumnDef(mel:Risk_Footprint_accuracy, 51),
+	tpl:MelColumn(?tag_number_entity, mel:Risk_Design_basis, ?risk_design_basis), tpl:MelColumnDef(mel:Risk_Design_basis, 52),
+	tpl:MelColumn(?tag_number_entity, mel:Risk_comments, ?risk_comments), tpl:MelColumnDef(mel:Risk_comments, 53),
+	tpl:MelColumn(?tag_number_entity, mel:Remarks, ?remarks), tpl:MelColumnDef(mel:Remarks, 54)
+} .
+
+tpl:MelColumn [
+	! ottr:IRI ?tag_number_entity,
+	! ottr:IRI ?column_property,
+	xsd:string ?value
+] :: {
+	ottr:Triple(?tag_number_entity, ?column_property, ?value)
+} .
+
+tpl:MelColumnDef [
+	! ottr:IRI ?column_property,
+	xsd:integer ?column_index
+] :: {
+	o-rdf:Type(mel:hasMelColumnValue, owl:DatatypeProperty),
+	o-rdf:Type(?column_property, owl:DatatypeProperty),
+	ottr:Triple(?column_property, rdfs:subPropertyOf, mel:hasMelColumnValue),
+	ottr:Triple(?column_property, mel:hasColumnIndex, ?column_index),
+	o-rdf:Type(mel:hasColumnIndex, owl:AnnotationProperty)
+} .
+
+tpl:TagNumberEntity [
+	! ottr:IRI		?tag_number_entity,
+	xsd:string		?tag_number,
+	!? ottr:IRI		?tag_status,
+	!? ottr:IRI		?discipline,
+	? xsd:string	?cost_code_cor,
+	!? ottr:IRI		?skid_ref,
+	? xsd:string	?po_package_number,
+	!? ottr:IRI		?system_number,
+	? xsd:string	?equipment_type_description,
+	!? ottr:IRI		?area,
+	!? ottr:IRI		?sub_area,
+	!? ottr:IRI		?function_area
+] :: {
+	o-rdf:Type(?tag_number_entity, mel:TagNumber),
+	tpl:TagNumber(?tag_number_entity, ?tag_number),
+	tpl:TagStatus(?tag_number_entity, ?tag_status),
+	tpl:TagDiscipline(?tag_number_entity, ?discipline),
+	tpl:TagCostCode(?tag_number_entity, ?cost_code_cor),
+	tpl:TagSkidRef(?tag_number_entity, ?skid_ref),
+	tpl:TagPOPackageNumber(?tag_number_entity, ?po_package_number),
+	tpl:TagSystemNumber(?tag_number_entity, ?system_number),
+	tpl:TagEquipmentTypeDescription(?tag_number_entity, ?equipment_type_description),
+	tpl:TagArea(?tag_number_entity, ?area),
+	tpl:TagSubArea(?tag_number_entity, ?sub_area),
+	tpl:TagFunctionArea(?tag_number_entity, ?function_area)
+} .
+
+tpl:Discipline [
+	! ottr:IRI		?discipline_entity,
+	xsd:string		?rdfs_label,
+	xsd:string		?discipline_code
+] :: {
+	o-rdf:Type(?discipline_entity, mel:Discipline),
+	o-rdfs:Label(?discipline_entity, ?rdfs_label),
+	ottr:Triple(?discipline_entity, mel:hasDisciplineCode, ?discipline_code)
+} .
+
+tpl:Area [
+	! ottr:IRI		?area_entity,
+	xsd:string		?rdfs_label,
+	xsd:string		?area_code
+] :: {
+	o-rdf:Type(?area_entity, mel:Area),
+	o-rdfs:Label(?area_entity, ?rdfs_label),
+	ottr:Triple(?area_entity, mel:hasAreaCode, ?area_code)
+} .
+
+tpl:SubArea [
+	! ottr:IRI		?sub_area_entity,
+	xsd:string		?rdfs_label,
+	xsd:string		?sub_area_code
+] :: {
+	o-rdf:Type(?sub_area_entity, mel:SubArea),
+	o-rdfs:Label(?sub_area_entity, ?rdfs_label),
+	ottr:Triple(?sub_area_entity, mel:hasSubAreaCode, ?sub_area_code)
+} .
+
+tpl:FunctionArea [
+	! ottr:IRI		?function_area_entity,
+	xsd:string		?rdfs_label,
+	xsd:string		?function_area_code
+] :: {
+	o-rdf:Type(?function_area_entity, mel:FunctionArea),
+	o-rdfs:Label(?function_area_entity, ?rdfs_label),
+	ottr:Triple(?function_area_entity, mel:hasFunctionAreaCode, ?function_area_code)
+} .
+
+tpl:HasPart [
+	! ottr:IRI		?whole_entity,
+	! ottr:IRI		?part_entity
+] :: {
+	ottr:Triple(?whole_entity, mel:hasPart, ?part_entity)
+} .
+
+tpl:TopTag [ ! ottr:IRI ?tag_number_entity, xsd:boolean ?is_top_tag ] :: {
+	ottr:Triple(?tag_number_entity, mel:isTopTag, ?is_top_tag)
+} .
+
+tpl:TagNumber[ ! ottr:IRI ?tag_number_entity, xsd:string ?tag_number ] :: {
+	ottr:Triple(?tag_number_entity, mel:hasTagNumber, ?tag_number)
+} .
+
+tpl:TagStatus[ ! ottr:IRI ?tag_number_entity, ! ottr:IRI ?tag_status ] :: {
+	ottr:Triple(?tag_number_entity, mel:hasTagStatus, ?tag_status)
+} .
+
+tpl:TagDiscipline[ ! ottr:IRI ?tag_number_entity, ! ottr:IRI ?discipline ] :: {
+	ottr:Triple(?tag_number_entity, mel:hasDiscipline, ?discipline)
+} .
+
+tpl:TagCostCode[ ! ottr:IRI ?tag_number_entity, xsd:string ?cost_code_cor ] :: {
+	ottr:Triple(?tag_number_entity, mel:hasCostCodeCOR, ?cost_code_cor)
+} .
+
+tpl:TagSkidRef[ ! ottr:IRI ?tag_number_entity, ! ottr:IRI ?skid_ref ] :: {
+	ottr:Triple(?tag_number_entity, mel:hasSkidRef, ?skid_ref)
+} .
+
+tpl:TagPOPackageNumber[ ! ottr:IRI ?tag_number_entity, xsd:string ?po_package_number ] :: {
+	ottr:Triple(?tag_number_entity, mel:hasPOPackageNumber, ?po_package_number)
+} .
+
+tpl:TagSystemNumber[ ! ottr:IRI ?tag_number_entity, ! ottr:IRI ?system_number ] :: {
+	ottr:Triple(?tag_number_entity, mel:isPartOf, ?system_number)
+} .
+
+tpl:TagEquipmentTypeDescription[ ! ottr:IRI ?tag_number_entity, xsd:string ?equipment_type_description ] :: {
+	ottr:Triple(?tag_number_entity, mel:hasEquipmentTypeDescription, ?equipment_type_description)
+} .
+
+tpl:TagArea[ ! ottr:IRI ?tag_number_entity, ! ottr:IRI ?area ] :: {
+	ottr:Triple(?tag_number_entity, mel:isLocatedIn, ?area)
+} .
+
+tpl:TagSubArea[ ! ottr:IRI ?tag_number_entity, ! ottr:IRI ?sub_area ] :: {
+	ottr:Triple(?tag_number_entity, mel:isLocatedIn, ?sub_area)
+} .
+
+tpl:TagFunctionArea[ ! ottr:IRI ?tag_number_entity, ! ottr:IRI ?function_area ] :: {
+	ottr:Triple(?tag_number_entity, mel:isLocatedIn, ?function_area)
+} .

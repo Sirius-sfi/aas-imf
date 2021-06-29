@@ -1,0 +1,454 @@
+PREFIX pav: <http://purl.org/pav/>
+PREFIX o-rdf: <http://tpl.ottr.xyz/rdf/0.1/>
+PREFIX o-rdfs: <http://tpl.ottr.xyz/rdfs/0.2/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX pca-tpl: <http://data.posccaesar.org/tpl/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pca: <http://data.posccaesar.org/rdl/>
+PREFIX tpl: <https://ottr.xyz/lib/eng/mel/>
+PREFIX bs: <http://bottr-spec/>
+PREFIX uom: <http://data.posccaesar.org/uom/>
+PREFIX upp: <http://data.aibel.com/asset/equinor/AskjaUPP/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX lis: <http://standards.iso.org/iso/15926/part14/>
+PREFIX ottr: <http://ns.ottr.xyz/0.4/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, Capacity_m3, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS291959';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/VerticalPressureVessel> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Capacity_m3
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, Flow_rate_1_m3_per_hr, Shaft_Power_kW, Rated_Power_kW, L_or_TT_mm, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS14196773';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/CentrifugalPumpSkid> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Flow_rate_1_m3_per_hr
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Shaft_Power_kW
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Rated_Power_kW
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, L_or_TT_mm, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS43167562195';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/InlineMixer> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, Temp_2_degC, Flow_rate_1_m3_per_hr, Flow_rate_2_m3_per_hr, Heat_Transfer_Surface_Area_m2, L_or_TT_mm, W_or_ID_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS419084';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/ShellAndTubeHeatExchanger> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_2_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Flow_rate_1_m3_per_hr
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Flow_rate_2_m3_per_hr
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Heat_Transfer_Surface_Area_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, Temp_2_degC, Flow_rate_1_m3_per_hr, Flow_rate_2_m3_per_hr, L_or_TT_mm, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS441674';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/PlateAndFrameHeatExchanger> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_2_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Flow_rate_1_m3_per_hr
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Flow_rate_2_m3_per_hr
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, Flow_rate_1_m3_per_hr, Shaft_Power_kW, Rated_Power_kW, L_or_TT_mm, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS417194';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/CentrifugalCompressor> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Flow_rate_1_m3_per_hr
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Shaft_Power_kW
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Rated_Power_kW
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, L_or_TT_mm, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS14070475';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/ElectricalHeater> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, Flow_rate_1_m3_per_hr, Shaft_Power_kW, Rated_Power_kW, L_or_TT_mm, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS866114';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/VerticalSuspendedCentrifugalPump> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Flow_rate_1_m3_per_hr
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Shaft_Power_kW
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Rated_Power_kW
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, L_or_TT_mm, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS276569';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/ChlorinationSystem> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, Capacity_m3, L_or_TT_mm, W_or_ID_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS5785737';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/KnockOutDrum> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Capacity_m3
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, Flow_rate_1_m3_per_hr, L_or_TT_mm, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS4316489015';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/BackwashFilter> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Flow_rate_1_m3_per_hr
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+[] a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/',REPLACE(Tag_Number, ' ', '_')), CLASS_OF_INANIMATE_PHYSICAL_OBJECT, Pressure_1_barg, Pressure_2_barg, Temp_1_degC, L_or_TT_mm, W_or_ID_mm, H_or_TT_mm, Footprint_m2, Net_Dry_Weight_kg, Gross_Dry_Weight_kg, Content_Weight_kg
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE CLASS_OF_INANIMATE_PHYSICAL_OBJECT = 'http://data.posccaesar.org/rdl/RDS446129';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/FlareTip> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number
+      [ ottr:type ottr:IRI ] # CLASS_OF_INANIMATE_PHYSICAL_OBJECT
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_1_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Pressure_2_barg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Temp_1_degC
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # L_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # W_or_ID_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # H_or_TT_mm
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Footprint_m2
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Net_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Gross_Dry_Weight_kg
+      [ ottr:type xsd:double ; ottr:nullValue ottr:none ] # Content_Weight_kg
+   ) .
+
+bs:FunctionArea a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT DISTINCT
+			NVL2(TRIM(BOTH ' ' FROM Function_Area), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', 'FunctionArea_', REGEXP_REPLACE(REPLACE(TRIM(BOTH ' ' FROM Function_Area), ' ', '_'), '\\.', '')), null) AS Function_Area_Entity,
+			CONCAT('Function Area ', Function_Area) AS Rdfs_Label,
+			NVL2(TRIM(BOTH ' ' FROM Function_Area), TRIM(BOTH ' ' FROM Function_Area), null) AS Function_Area_Code
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv');
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/FunctionArea> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Function_Area_Entity
+      [ ottr:type xsd:string ] # Rdfs_Label
+      [ ottr:type xsd:string ] # Function_Area_Code
+   ) .
+
+bs:TopTagFalse a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT 
+			NVL2(TRIM(BOTH ' ' FROM Tag_Number), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', REPLACE(TRIM(BOTH ' ' FROM Tag_Number), ' ', '_')), null) AS Tag_Number_Entity,
+			('false') AS Top_Tag
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE 
+			(TRIM(BOTH ' ' FROM Top_Tag) is null or TRIM(BOTH ' ' FROM Top_Tag) != 'YES');
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/TopTag> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number_Entity
+      [ ottr:type xsd:boolean ] # Top_Tag
+   ) .
+
+bs:Area a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT DISTINCT
+			NVL2(TRIM(BOTH ' ' FROM Area), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', 'Area_', REPLACE(TRIM(BOTH ' ' FROM Area), ' ', '_')), null) AS Area_Entity,
+			CONCAT('Area ', Area) AS Rdfs_Label,
+			NVL2(TRIM(BOTH ' ' FROM Area), TRIM(BOTH ' ' FROM Area), null) AS Area_Code
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv');
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/Area> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Area_Entity
+      [ ottr:type xsd:string ] # Rdfs_Label
+      [ ottr:type xsd:string ] # Area_Code
+   ) .
+
+bs:TopTagTrue a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT 
+			NVL2(TRIM(BOTH ' ' FROM Tag_Number), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', REPLACE(TRIM(BOTH ' ' FROM Tag_Number), ' ', '_')), null) AS Tag_Number_Entity,
+			('true') AS Top_Tag
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv')
+      WHERE 
+			TRIM(BOTH ' ' FROM Top_Tag) = 'YES';
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/TopTag> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number_Entity
+      [ ottr:type xsd:boolean ] # Top_Tag
+   ) .
+
+bs:Discipline a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT DISTINCT
+			NVL2(TRIM(BOTH ' ' FROM Discipline), CONCAT('http://data.aibel.com/ontology/mel/', 'Discipline_', REPLACE(TRIM(BOTH ' ' FROM Discipline), ' ', '_')), null) AS Discipline_Entity,
+			CONCAT('Discipline ', Discipline) AS Rdfs_Label,
+			NVL2(TRIM(BOTH ' ' FROM Discipline), TRIM(BOTH ' ' FROM Discipline), null) AS Discipline_Code
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv');
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/Discipline> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Discipline_Entity
+      [ ottr:type xsd:string ] # Rdfs_Label
+      [ ottr:type xsd:string ] # Discipline_Code
+   ) .
+
+bs:SubArea a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT DISTINCT
+			NVL2(TRIM(BOTH ' ' FROM Sub_Area), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', 'SubArea_', REPLACE(TRIM(BOTH ' ' FROM Sub_Area), ' ', '_')), null) AS Sub_Area_Entity,
+			CONCAT('Sub Area ', Sub_Area) AS Rdfs_Label,
+			NVL2(TRIM(BOTH ' ' FROM Sub_Area), TRIM(BOTH ' ' FROM Sub_Area), null) AS Sub_Area_Code
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv');
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/SubArea> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Sub_Area_Entity
+      [ ottr:type xsd:string ] # Rdfs_Label
+      [ ottr:type xsd:string ] # Sub_Area_Code
+   ) .
+
+bs:TagNumberEntity a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT 
+			NVL2(TRIM(BOTH ' ' FROM Tag_Number), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', REPLACE(TRIM(BOTH ' ' FROM Tag_Number), ' ', '_')), null) AS Tag_Number_Entity,
+			NVL2(TRIM(BOTH ' ' FROM Tag_Number), TRIM(BOTH ' ' FROM Tag_Number), null),
+			NVL2(TRIM(BOTH ' ' FROM Tag_Status), CONCAT('http://data.aibel.com/ontology/mel/', 'TagStatus_', REPLACE(TRIM(BOTH ' ' FROM Tag_Status), ' ', '_')), null),
+			NVL2(TRIM(BOTH ' ' FROM Discipline), CONCAT('http://data.aibel.com/ontology/mel/', 'Discipline_', REPLACE(TRIM(BOTH ' ' FROM Discipline), ' ', '_')), null),
+			NVL2(TRIM(BOTH ' ' FROM Cost_Code_COR), TRIM(BOTH ' ' FROM Cost_Code_COR), null),
+			NVL2(TRIM(BOTH ' ' FROM Skid_Ref), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', REPLACE(TRIM(BOTH ' ' FROM Skid_Ref), ' ', '_')), null),
+			NVL2(TRIM(BOTH ' ' FROM PO_Package_Number), TRIM(BOTH ' ' FROM PO_Package_Number), null),
+			NVL2(TRIM(BOTH ' ' FROM System_Number), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', 'System_', REGEXP_REPLACE(REPLACE(TRIM(BOTH ' ' FROM System_Number), ' ', '_'), '\\.0', '')), null),
+			NVL2(TRIM(BOTH ' ' FROM Equipment_Type_Description), TRIM(BOTH ' ' FROM Equipment_Type_Description), null),
+			NVL2(TRIM(BOTH ' ' FROM Area), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', 'Area_', REPLACE(TRIM(BOTH ' ' FROM Area), ' ', '_')), null) AS Area_Entity,
+			NVL2(TRIM(BOTH ' ' FROM Sub_Area), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', 'SubArea_', REPLACE(TRIM(BOTH ' ' FROM Sub_Area), ' ', '_')), null) AS Sub_Area_Entity,
+			NVL2(TRIM(BOTH ' ' FROM Function_Area), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', 'FunctionArea_', REGEXP_REPLACE(REPLACE(TRIM(BOTH ' ' FROM Function_Area), ' ', '_'), '\\.', '')), null) AS Function_Area_Entity
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv');
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/TagNumberEntity> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Tag_Number_Entity
+      [ ottr:type xsd:string ] # Tag_Number
+      [ ottr:type ottr:IRI ; ottr:nullValue ottr:none ] # Tag_Status
+      [ ottr:type ottr:IRI ; ottr:nullValue ottr:none ] # Discipline
+      [ ottr:type xsd:string ; ottr:nullValue ottr:none ] # Cost_Code_COR
+      [ ottr:type ottr:IRI ; ottr:nullValue ottr:none ] # Skid_Ref
+      [ ottr:type xsd:string ; ottr:nullValue ottr:none ] # PO_Package_Number
+      [ ottr:type ottr:IRI ; ottr:nullValue ottr:none ] # System_Number
+      [ ottr:type xsd:string ; ottr:nullValue ottr:none ] # Equipment_Type_Description
+      [ ottr:type ottr:IRI ; ottr:nullValue ottr:none ] # Area_Entity
+      [ ottr:type ottr:IRI ; ottr:nullValue ottr:none ] # Sub_Area_Entity
+      [ ottr:type ottr:IRI ; ottr:nullValue ottr:none ] # Function_Area_Entity
+   ) .
+
+bs:AreaHasPartSubArea a ottr:InstanceMap ;
+   ottr:source [ a ottr:H2Source ] ;
+   ottr:query """
+      SELECT DISTINCT
+			NVL2(TRIM(BOTH ' ' FROM Area), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', 'Area_', REPLACE(TRIM(BOTH ' ' FROM Area), ' ', '_')), null) AS Area_Entity,
+			NVL2(TRIM(BOTH ' ' FROM Sub_Area), CONCAT('http://data.aibel.com/asset/equinor/AskjaUPP/', 'SubArea_', REPLACE(TRIM(BOTH ' ' FROM Sub_Area), ' ', '_')), null) AS Sub_Area_Entity
+      FROM CSVREAD('csv/Askja UPP MEL c study with mapping.csv');
+   """ ;
+   ottr:template <https://ottr.xyz/lib/eng/mel/HasPart> ;
+   ottr:argumentMaps (
+      [ ottr:type ottr:IRI ] # Area_Entity
+      [ ottr:type ottr:IRI ] # Sub_Area_Entity
+   ) .

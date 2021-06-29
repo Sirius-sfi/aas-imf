@@ -1,0 +1,8 @@
+facility;client_project;company;contractor;application;iri_id;parent_iri;name;semantic_id;description;discipline;area;footprint_m2;net_dry_weight_kg
+KRA;xxxx;AIBEL;AI;IMF;http://data.aibel.com/project/007990/A-20PA001A-M01;http://data.aibel.com/project/007990/A-20PZ001A;A-20PA001A-M01;http://data.posccaesar.org/rdl/RDS472994;Liquid Export Pump A Motor;E;AP200;;
+KRA;xxxx;AIBEL;AI;IMF;http://data.aibel.com/project/007990/A-20PA001B-M01;http://data.aibel.com/project/007990/A-20PZ001B;A-20PA001B-M01;http://data.posccaesar.org/rdl/RDS472994;Liquid Export Pump B Motor;E;AP200;;
+KRA;xxxx;AIBEL;AI;IMF;http://data.aibel.com/project/007990/A-20VA001;http://equinor.com/KRA/MainProcessingSystem;A-20VA001;http://data.posccaesar.org/rdl/RDS2194378711;Inlet Separator;R;AP300;12.25;65000
+KRA;xxxx;AIBEL;AI;IMF;http://data.aibel.com/project/007990/A-20PA001A;http://data.aibel.com/project/007990/A-20PZ001A;A-20PA001A;http://data.posccaesar.org/rdl/RDS416834;Liquid Export Pump A;R;AP200;;
+KRA;xxxx;AIBEL;AI;IMF;http://data.aibel.com/project/007990/A-20PA001B;http://data.aibel.com/project/007990/A-20PZ001B;A-20PA001B;http://data.posccaesar.org/rdl/RDS416834;Liquid Export Pump B ;R;AP200;;
+KRA;xxxx;AIBEL;AI;IMF;http://data.aibel.com/project/007990/A-20PZ001A;http://equinor.com/KRA/MainProcessingSystem;A-20PZ001A;http://data.posccaesar.org/rdl/RDS283589;Liquid Export Pump A Skid;R;AP200;16.8;19000
+KRA;xxxx;AIBEL;AI;IMF;http://data.aibel.com/project/007990/A-20PZ001B;http://equinor.com/KRA/MainProcessingSystem;A-20PZ001B;http://data.posccaesar.org/rdl/RDS283589;Liquid Export Pump B Skid;R;AP200;16.8;19000
