@@ -74,7 +74,7 @@ public class CommandRunner {
 
     public String getCommandWithArgs() {
         StringBuffer sb = new StringBuffer();
-        sb.append(command);
+        sb.append(command.replace("\"", ""));
         for (String arg : argList) {
             sb.append(' ');
             sb.append(arg);

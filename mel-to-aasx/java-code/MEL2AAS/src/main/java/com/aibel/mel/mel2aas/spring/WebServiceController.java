@@ -11,15 +11,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class WebServiceController {
@@ -32,38 +36,48 @@ public class WebServiceController {
     private final File tocFile;
     private final File mapFile;
     private final File tplRegFile;
+    private final MEL2AAS mel2AAS;
 
     @Autowired
-    public WebServiceController(TempStorageService tempStorageService, ApplicationConfig appConfig) {
-        LOG.debug("File.separator='" + File.separator + "'");
+    public WebServiceController(TempStorageService tempStorageService, ApplicationConfig appConfig) throws IOException {
+        LOG.info("application.name=" + appConfig.getApplicationName());
+        LOG.info("build.version=" + appConfig.getBuildVersion());
+        LOG.info("build.timestamp=" + appConfig.getBuildTimestamp());
 
         this.tempStorageService = tempStorageService;
         this.appConfig = appConfig;
-
-        LOG.debug("appConfig.getPrefixFile()=" + appConfig.getPrefixFile());
-        LOG.debug("appConfig.getTocFile()=" + appConfig.getTocFile());
-        LOG.debug("appConfig.getMapFile()=" + appConfig.getMapFile());
-        LOG.debug("appConfig.getTplRegFile()=" + appConfig.getTplRegFile());
-
         this.prefixFile = new File(appConfig.getPrefixFile());
         this.tocFile = new File(appConfig.getTocFile());
         this.mapFile = new File(appConfig.getMapFile());
         this.tplRegFile = new File(appConfig.getTplRegFile());
+        this.mel2AAS = new MEL2AAS(tocFile, mapFile, tplRegFile, prefixFile);
 
-        LOG.debug("appConfig.getLutraCommand()=" + appConfig.getLutraCommand());
-        LOG.debug("appConfig.getPathToTemplateLibrary()=" + appConfig.getPathToTemplateLibrary());
-        LOG.debug("appConfig.getRdfToAasxCommand()=" + appConfig.getRdfToAasxCommand());
+        /*
+         * LOG.info:
+         */
+        LOG.info("melws.prefixFile=" + appConfig.getPrefixFile());
+        LOG.info("melws.tocFile=" + appConfig.getTocFile());
+        LOG.info("melws.mapFile=" + appConfig.getMapFile());
+        LOG.info("melws.tplRegFile=" + appConfig.getTplRegFile());
+        LOG.info("melws.pathToTemplateLibrary=" + appConfig.getPathToTemplateLibrary());
+        LOG.info("melws.lutraCommand=" + appConfig.getLutraCommand());
+        LOG.info("melws.rdfToAasxCommand=" + appConfig.getRdfToAasxCommand());
+
+        /*
+         * LOG.debug:
+         */
+        LOG.debug("File.separator='" + File.separator + "'");
     }
 
     @PostMapping("/mel-to-rdf")
+    @ResponseBody
     public ResponseEntity<Resource> melToRdf(
             @RequestParam("mel_csv_file") MultipartFile melCsvFile
     ) throws IOException, TempStorageServiceException, CommandRunnerException {
         FileHandle csvFile = tempStorageService.createFileAndCopyContent(melCsvFile, FileType.CSV);
         FileHandle bottrFile = tempStorageService.createFileWithSameUuid(csvFile, FileType.BOTTR);
         FileHandle rdfFile = tempStorageService.createFileWithSameUuid(csvFile, FileType.RDF);
-        MEL2AAS mel2Aas = new MEL2AAS(csvFile.getFile(), tocFile, mapFile, tplRegFile, prefixFile);
-        mel2Aas.writeBottrSpec(bottrFile.getFile());
+        mel2AAS.writeBottrSpec(csvFile.getFile(), bottrFile.getFile());
 
         CommandRunner runner = new CommandRunner(appConfig.getLutraCommand());
         runner.addArgument("--mode expand");
@@ -76,18 +90,19 @@ public class WebServiceController {
         runner.addArgument(bottrFile.getFile().getCanonicalPath());
         runner.execute();
         LOG.debug("runner.getExitValue()=" + runner.getExitValue());
+        LOG.debug("runner.getNonNullOutput()=\n" + runner.getNonNullOutput());
         if (runner.getExitValue() != 0) {
-            LOG.debug("runner.getNonNullOutput()=\n" + runner.getNonNullOutput());
             throw new CommandRunnerException(runner.getNonNullOutput());
         }
-        Resource resource = rdfFile.asResource();
         /*
          * TODO: Remove all file handles related to CSV-file!
          */
-        return new ResponseEntity<>(resource, HttpStatus.OK);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + rdfFile.getPublicFileName() + "\"").body(rdfFile.asResource());
     }
 
     @PostMapping("/rdf-to-aasx")
+    @ResponseBody
     public ResponseEntity<Resource> rdfToAasx(
             @RequestParam(name = "mel_rdf_file") MultipartFile melRdfFile,
             @RequestParam(name = "uri_aas", required = false, defaultValue = "http://data.aibel.com/asset/equinor/AskjaUPP/MEL") String uriAas,
@@ -126,11 +141,46 @@ public class WebServiceController {
             LOG.debug("runner.getNonNullOutput()=\n" + runner.getNonNullOutput());
             throw new CommandRunnerException(runner.getNonNullOutput());
         }
-        Resource resource = aasxFile.asResource();
         /*
          * TODO: Remove all file handles related to CSV-file!
          */
-        return new ResponseEntity<>(resource, HttpStatus.OK);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + aasxFile.getPublicFileName() + "\"").body(aasxFile.asResource());
+    }
+
+    @GetMapping("/log")
+    @ResponseBody
+    public ResponseEntity<String> getLog() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(new File("/var/log/melws/spring.log")));
+        String log = "";
+        String line;
+        while ((line = reader.readLine()) != null) {
+            log += line + '\n';
+        }
+        reader.close();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
+        return new ResponseEntity<String>(log, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/version")
+    @ResponseBody
+    public ResponseEntity<String> getVersion() throws IOException {
+        StringBuffer sb = new StringBuffer();
+        sb.append("application.name").append("=").append(appConfig.getApplicationName()).append('\n');
+        sb.append("build.version").append("=").append(appConfig.getBuildVersion()).append('\n');
+        sb.append("build.timestamp").append("=").append(appConfig.getBuildTimestamp());
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
+        return new ResponseEntity<String>(sb.toString(), headers, HttpStatus.OK);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity<String> handleAllExceptions(Exception ex, WebRequest request) {
+        LOG.debug("ex.getMessage()=" + ex.getMessage());
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
+        return new ResponseEntity<String>(ex.getMessage(), headers, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

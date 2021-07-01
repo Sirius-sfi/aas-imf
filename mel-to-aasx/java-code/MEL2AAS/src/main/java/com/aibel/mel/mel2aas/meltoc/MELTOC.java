@@ -132,6 +132,11 @@ public class MELTOC implements Iterable<TocEntry> {
     }
 
     public boolean hasEntry(String columnName) {
-        return entries.containsKey(columnName);
+        for (String colName : entries.keySet()) {
+            if (columnName.toUpperCase().equals(colName.toUpperCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

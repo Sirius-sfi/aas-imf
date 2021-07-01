@@ -261,9 +261,10 @@ public class Main {
 
             MEL2AAS m2o = null;
             try {
-                m2o = new MEL2AAS(melCsvFileName, melTocFileName, melMapFileName, tplRegFileName, prefixFileName);
+                m2o = new MEL2AAS(melTocFileName, melMapFileName, tplRegFileName, prefixFileName);
                 File bottrSpecFile = new File(bottrOutFileName);
-                m2o.writeBottrSpec(bottrSpecFile);
+                File csvFile = new File(melCsvFileName);
+                m2o.writeBottrSpec(csvFile, bottrSpecFile);
             } catch (Exception e) {
 //                if (comAibelLogger.getLevel() == Level.DEBUG) {
 //                    e.printStackTrace(System.err);
@@ -317,9 +318,10 @@ public class Main {
 
             MEL2AAS m2o = null;
             try {
-                m2o = new MEL2AAS(melCsvFileName, melTocFileName, melMapFileName, tplRegFileName, prefixFileName);
+                m2o = new MEL2AAS(melTocFileName, melMapFileName, tplRegFileName, prefixFileName);
                 File file = new File(tplSigOutFileName);
-                m2o.writeTemplateSignatures(file);
+                File csvFile = new File(melCsvFileName);
+                m2o.writeTemplateSignatures(csvFile, file);
             } catch (Exception e) {
 //                if (comAibelLogger.getLevel() == Level.DEBUG) {
 //                    e.printStackTrace(System.err);
@@ -373,9 +375,10 @@ public class Main {
 
             MEL2AAS m2o = null;
             try {
-                m2o = new MEL2AAS(melCsvFileName, melTocFileName, melMapFileName, tplRegFileName, prefixFileName);
+                m2o = new MEL2AAS(melTocFileName, melMapFileName, tplRegFileName, prefixFileName);
                 File file = new File(sparqlQryPathName);
-                m2o.writeSparqlQueries(file);
+                File csvFile = new File(melCsvFileName);
+                m2o.writeSparqlQueries(csvFile, file);
             } catch (Exception e) {
 //                if (comAibelLogger.getLevel() == Level.DEBUG) {
 //                    e.printStackTrace(System.err);

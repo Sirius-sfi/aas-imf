@@ -21,7 +21,6 @@ public class MEL2AAS {
 
     private static final Logger log = LoggerFactory.getLogger(MEL2AAS.class);
 
-    private final File melCsvFile;
     private final File melTocFile;
     private final File melMapFile;
     private final File tplRegFile;
@@ -31,10 +30,8 @@ public class MEL2AAS {
     private final MELTOC melToc;
     private final MELPropertyMap melMap;
     private final TemplateRegister tplReg;
-    private final BottrSpec bottrSpec;
 
-    public MEL2AAS(File melCsvFile, File melTocFile, File melMapFile, File tplRegFile, File prefixFile) throws IOException {
-        this.melCsvFile = melCsvFile;
+    public MEL2AAS(File melTocFile, File melMapFile, File tplRegFile, File prefixFile) throws IOException {
         this.melTocFile = melTocFile;
         this.melMapFile = melMapFile;
         this.tplRegFile = tplRegFile;
@@ -42,18 +39,15 @@ public class MEL2AAS {
         PrefixParser pfxParser = new PrefixParser(prefixFile);
         this.prefixMap = pfxParser.getPrefixMap();
         this.melToc = new MELTOC(melTocFile);
-        log.debug("Parsed melToc: " + melToc.toString());
-        validateMelCsv();
+//        log.debug("Parsed melToc: " + melToc.toString());
         this.melMap = new MELPropertyMap(melMapFile, melToc);
-        log.debug("Parsed melMap: " + melMap.toString());
+//        log.debug("Parsed melMap: " + melMap.toString());
         this.tplReg = new TemplateRegister(tplRegFile, prefixMap);
-        log.debug("Parsed tplReg: " + tplReg.toString());
-        this.bottrSpec = new BottrSpec(melToc, melMap, tplReg, prefixMap, melCsvFile);
+//        log.debug("Parsed tplReg: " + tplReg.toString());
     }
 
-    public MEL2AAS(String melCsvFileName, String melTocFileName, String melMapFileName, String tplRegFileName, String prefixFileName) throws IOException {
+    public MEL2AAS(String melTocFileName, String melMapFileName, String tplRegFileName, String prefixFileName) throws IOException {
         this(
-                new File(melCsvFileName),
                 new File(melTocFileName),
                 new File(melMapFileName),
                 new File(tplRegFileName),
@@ -61,7 +55,11 @@ public class MEL2AAS {
         );
     }
 
-    private void validateMelCsv() throws IOException {
+    private BottrSpec getBottrSpec(File melCsvFile) {
+        return new BottrSpec(melToc, melMap, tplReg, prefixMap, melCsvFile);
+    }
+
+    private void validateMelCsv(File melCsvFile) throws IOException {
         Reader in = new FileReader(melCsvFile);
         CSVParser parser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
         for (String header : parser.getHeaderNames()) {
@@ -76,26 +74,32 @@ public class MEL2AAS {
         }
     }
 
-    public void writeBottrSpec(File bottrSpecFile) throws IOException {
+    public void writeBottrSpec(File melCsvFile, File bottrSpecFile) throws IOException {
+        validateMelCsv(melCsvFile);
+        BottrSpec bottrSpec = getBottrSpec(melCsvFile);
         BufferedWriter bw = new BufferedWriter(new FileWriter(bottrSpecFile));
         bw.write(bottrSpec.bottrSyntax());
         bw.close();
     }
 
-    public void writeTemplateSignatures(File templateFile) throws IOException {
+    public void writeTemplateSignatures(File melCsvFile, File templateFile) throws IOException {
+        validateMelCsv(melCsvFile);
+        BottrSpec bottrSpec = getBottrSpec(melCsvFile);
         OTTRTemplates tpl = new OTTRTemplates(bottrSpec, prefixMap);
         BufferedWriter bw = new BufferedWriter(new FileWriter(templateFile));
         bw.write(tpl.stottrSyntax());
         bw.close();
     }
 
-    public void writeSparqlQueries(File queryPath) throws IOException {
+    public void writeSparqlQueries(File melCsvFile, File queryPath) throws IOException {
         if (!queryPath.exists()) {
             throw new IllegalArgumentException("Path not found: " + queryPath.getPath());
         }
         if (!queryPath.isDirectory()) {
             throw new IllegalArgumentException("Path is not a directory: " + queryPath.getPath());
         }
+        validateMelCsv(melCsvFile);
+        BottrSpec bottrSpec = getBottrSpec(melCsvFile);
         String path = queryPath.getPath();
         if (!path.endsWith("" + File.separator)) {
             path += File.separator;

@@ -20,8 +20,9 @@ public class StorageConfig {
 
     @Autowired
     public StorageConfig(@Value("${melws.temporaryDirectory}") String temporaryDirectory, @Value("${melws.temporaryDirectoryPurgeFiles}") boolean purgeFiles) throws TempStorageConfigException {
+        LOG.info("melws.temporaryDirectory=" + temporaryDirectory);
+        LOG.info("melws.temporaryDirectoryPurgeFiles=" + purgeFiles);
         this.temporaryDirectory = temporaryDirectory;
-        LOG.info("Temporary files directory: " + this.temporaryDirectory);
         this.tempStorageService = new TempStorageServiceImpl(temporaryDirectory, purgeFiles);
     }
 

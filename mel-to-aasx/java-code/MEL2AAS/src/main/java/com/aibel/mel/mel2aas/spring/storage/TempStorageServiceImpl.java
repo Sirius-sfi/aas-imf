@@ -3,7 +3,6 @@ package com.aibel.mel.mel2aas.spring.storage;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
@@ -23,7 +22,7 @@ public class TempStorageServiceImpl implements TempStorageService {
         this.tmpDirectory = new File(tmpDirectory);
         checkDirectory(this.tmpDirectory);
         if (purgeFiles) {
-            LOG.info("Purging all files in temporary directory: " + tmpDirectory);
+            LOG.debug("Purging files from: " + tmpDirectory);
             recursivelyDelete(this.tmpDirectory);
         }
         for (FileType fileType : FileType.values()) {
@@ -107,19 +106,17 @@ public class TempStorageServiceImpl implements TempStorageService {
         IOUtils.copy(multipartFile.getInputStream(), out);
         out.close();
 
-        FileHandle fileHandle = new FileHandle(fileType, multipartFile.getOriginalFilename(), uuid, file);
+        FileHandle fileHandle = new FileHandle(fileType, multipartFile, uuid, file);
         addToMap(fileHandle);
         return fileHandle;
     }
 
     @Override
     public FileHandle createFileWithSameUuid(FileHandle fileHandle, FileType fileType) throws IOException, TempStorageServiceException {
-        UUID uuid = fileHandle.getUuid();
-        File file = getFile(fileType, uuid);
-
+        File file = getFile(fileType, fileHandle.getUuid());
         file.createNewFile();
 
-        FileHandle newFileHandle = new FileHandle(fileType, fileHandle.getOriginalFileName(), uuid, file);
+        FileHandle newFileHandle = new FileHandle(fileType, fileHandle, file);
         addToMap(newFileHandle);
         return newFileHandle;
     }

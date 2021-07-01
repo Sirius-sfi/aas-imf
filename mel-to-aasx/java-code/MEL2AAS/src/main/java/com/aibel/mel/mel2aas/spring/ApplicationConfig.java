@@ -6,6 +6,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ApplicationConfig {
 
+    @Value("${application.name}")
+    private String applicationName;
+
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Value("${build.timestamp}")
+    private String buildTimestamp;
+
     @Value("${melws.prefixFile}")
     private String prefixFile;
 
@@ -26,6 +35,18 @@ public class ApplicationConfig {
 
     @Value("${melws.rdfToAasxCommand}")
     private String rdfToAasxCommand;
+
+    public String getApplicationName() {
+        return applicationName;
+    }
+
+    public String getBuildVersion() {
+        return buildVersion;
+    }
+
+    public String getBuildTimestamp() {
+        return buildTimestamp;
+    }
 
     public String getPrefixFile() {
         return prefixFile;
