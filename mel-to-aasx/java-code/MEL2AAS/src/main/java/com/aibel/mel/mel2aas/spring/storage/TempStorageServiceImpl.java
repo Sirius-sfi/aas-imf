@@ -122,7 +122,7 @@ public class TempStorageServiceImpl implements TempStorageService {
     }
 
     @Override
-    public void remove(FileHandle fileHandle) throws TempStorageServiceException {
+    public void removeAllWithSameUuid(FileHandle fileHandle) throws TempStorageServiceException {
         List<FileHandle> list = removeFromMap(fileHandle.getUuid());
         if (list == null) {
             throw new TempStorageServiceException(FileHandle.class.getSimpleName() + " not part of file store: " + fileHandle);

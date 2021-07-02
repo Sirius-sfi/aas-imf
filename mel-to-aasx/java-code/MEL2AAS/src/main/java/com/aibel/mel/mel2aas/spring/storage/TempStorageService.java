@@ -10,6 +10,6 @@ public interface TempStorageService {
 
     FileHandle createFileWithSameUuid(FileHandle fileHandle, FileType fileType) throws IOException, TempStorageServiceException;
 
-    void remove(FileHandle fileHandle) throws TempStorageServiceException;
+    void removeAllWithSameUuid(FileHandle fileHandle) throws TempStorageServiceException;
 
 }

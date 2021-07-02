@@ -11,19 +11,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Enumeration;
+import java.util.Map;
 
 @Controller
 public class WebServiceController {
@@ -69,11 +66,81 @@ public class WebServiceController {
         LOG.debug("File.separator='" + File.separator + "'");
     }
 
+    private static ResponseEntity<Resource> getResponseEntityResource(FileHandle fileHandle) throws IOException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(fileHandle.getMediaType());
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileHandle.getPublicFileName() + "\"");
+        return new ResponseEntity<>(fileHandle.asResource(), headers, HttpStatus.OK);
+    }
+
+    private static ResponseEntity<String> getResponseEntityString(String content, HttpStatus httpStatus) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.TEXT_PLAIN);
+        return new ResponseEntity<>(content, headers, httpStatus);
+
+    }
+
+    private String format(HttpServletRequest httpRequest, MultipartFile multipartFile) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("REQUEST_URI=[").append(httpRequest.getRequestURI()).append("] ");
+        sb.append("METHOD=[").append(httpRequest.getMethod()).append("] ");
+        sb.append("REMOTE_ADDR=[").append(httpRequest.getRemoteAddr()).append("] ");
+        sb.append("ORIGINAL_FILE_NAME=[").append(multipartFile.getOriginalFilename()).append("] ");
+        sb.append("REQUEST_HEADERS=[").append(formatHeader(httpRequest)).append("] ");
+        sb.append("REQUEST_PARAMS=[").append(formatParams(httpRequest)).append("] ");
+        return sb.toString();
+    }
+
+    private String formatHeader(HttpServletRequest httpRequest) {
+        StringBuffer sb = new StringBuffer();
+        Enumeration<String> nameEnum = httpRequest.getHeaderNames();
+        boolean isFirst = true;
+        while (nameEnum.hasMoreElements()) {
+            if (isFirst) {
+                isFirst = false;
+            } else {
+                sb.append("||");
+            }
+            String name = nameEnum.nextElement();
+            sb.append(name).append(": ");
+            sb.append(httpRequest.getHeader(name));
+        }
+        return sb.toString();
+    }
+
+    private String formatParams(HttpServletRequest httpRequest) {
+        StringBuffer sb = new StringBuffer();
+        Map<String, String[]> parameterMap = httpRequest.getParameterMap();
+        boolean isFirst = true;
+        for (String paramName : parameterMap.keySet()) {
+            if (isFirst) {
+                isFirst = false;
+            } else {
+                sb.append(" ; ");
+            }
+            sb.append(paramName).append(" => [");
+            boolean isFirst2 = true;
+            for (String value : parameterMap.get(paramName)) {
+                if (isFirst2) {
+                    isFirst2 = false;
+                } else {
+                    sb.append(", ");
+                }
+                sb.append("'").append(value).append("'");
+            }
+            sb.append("]");
+        }
+        return sb.toString();
+    }
+
     @PostMapping("/mel-to-rdf")
     @ResponseBody
     public ResponseEntity<Resource> melToRdf(
-            @RequestParam("mel_csv_file") MultipartFile melCsvFile
+            @RequestParam("mel_csv_file") MultipartFile melCsvFile,
+            HttpServletRequest httpRequest
     ) throws IOException, TempStorageServiceException, CommandRunnerException {
+        LOG.info("Request: " + format(httpRequest, melCsvFile));
+
         FileHandle csvFile = tempStorageService.createFileAndCopyContent(melCsvFile, FileType.CSV);
         FileHandle bottrFile = tempStorageService.createFileWithSameUuid(csvFile, FileType.BOTTR);
         FileHandle rdfFile = tempStorageService.createFileWithSameUuid(csvFile, FileType.RDF);
@@ -94,11 +161,9 @@ public class WebServiceController {
         if (runner.getExitValue() != 0) {
             throw new CommandRunnerException(runner.getNonNullOutput());
         }
-        /*
-         * TODO: Remove all file handles related to CSV-file!
-         */
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + rdfFile.getPublicFileName() + "\"").body(rdfFile.asResource());
+        ResponseEntity<Resource> responseEntity = getResponseEntityResource(rdfFile);
+        tempStorageService.removeAllWithSameUuid(rdfFile);
+        return responseEntity;
     }
 
     @PostMapping("/rdf-to-aasx")
@@ -110,8 +175,11 @@ public class WebServiceController {
             @RequestParam(name = "uri_asset", required = false, defaultValue = "http://equinor.com/KRA/MEL") String uriAsset,
             @RequestParam(name = "id_short_aas", required = false, defaultValue = "MEL") String idShortAas,
             @RequestParam(name = "id_short_sub_model", required = false, defaultValue = "SubModel") String idShortSubModel,
-            @RequestParam(name = "id_short_asset", required = false, defaultValue = "MELAsset") String idShortAsset
+            @RequestParam(name = "id_short_asset", required = false, defaultValue = "MELAsset") String idShortAsset,
+            HttpServletRequest httpRequest
     ) throws IOException, TempStorageServiceException, CommandRunnerException {
+        LOG.info("Request: " + format(httpRequest, melRdfFile));
+
         LOG.debug("melRdfFile.getOriginalFilename()=" + melRdfFile.getOriginalFilename());
         LOG.debug("uriAas=" + uriAas);
         LOG.debug("uriSubModel=" + uriSubModel);
@@ -141,11 +209,9 @@ public class WebServiceController {
             LOG.debug("runner.getNonNullOutput()=\n" + runner.getNonNullOutput());
             throw new CommandRunnerException(runner.getNonNullOutput());
         }
-        /*
-         * TODO: Remove all file handles related to CSV-file!
-         */
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + aasxFile.getPublicFileName() + "\"").body(aasxFile.asResource());
+        ResponseEntity<Resource> responseEntity = getResponseEntityResource(aasxFile);
+        tempStorageService.removeAllWithSameUuid(aasxFile);
+        return responseEntity;
     }
 
     @GetMapping("/log")
@@ -158,9 +224,7 @@ public class WebServiceController {
             log += line + '\n';
         }
         reader.close();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
-        return new ResponseEntity<String>(log, headers, HttpStatus.OK);
+        return getResponseEntityString(log, HttpStatus.OK);
     }
 
     @GetMapping("/version")
@@ -170,17 +234,13 @@ public class WebServiceController {
         sb.append("application.name").append("=").append(appConfig.getApplicationName()).append('\n');
         sb.append("build.version").append("=").append(appConfig.getBuildVersion()).append('\n');
         sb.append("build.timestamp").append("=").append(appConfig.getBuildTimestamp());
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
-        return new ResponseEntity<String>(sb.toString(), headers, HttpStatus.OK);
+        return getResponseEntityString(sb.toString(), HttpStatus.OK);
     }
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<String> handleAllExceptions(Exception ex, WebRequest request) {
         LOG.debug("ex.getMessage()=" + ex.getMessage());
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
-        return new ResponseEntity<String>(ex.getMessage(), headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        return getResponseEntityString(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

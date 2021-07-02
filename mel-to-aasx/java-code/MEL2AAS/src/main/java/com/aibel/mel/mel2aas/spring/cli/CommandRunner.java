@@ -34,19 +34,17 @@ public class CommandRunner {
         Process process = null;
         try {
             String fullCommand = getCommandWithArgs();
-            LOG.debug("fullCommand=" + fullCommand);
+            LOG.info("Running command: " + fullCommand);
 
-            process = runtime.exec(getCommandWithArgs());
+            process = runtime.exec(fullCommand);
 
             stdoutOutput = getOutput(process.getInputStream());
 
             exitValue = process.waitFor();
-            LOG.debug("exitValue=" + exitValue);
+            LOG.info("Command exit status: " + exitValue);
 
-            if (exitValue != 0) {
-                stderrOutput = getOutput(process.getErrorStream());
-                LOG.debug("stderrOutput=\n" + stderrOutput);
-            }
+            stderrOutput = getOutput(process.getErrorStream());
+            LOG.info("Command output: " + getTrimmedOutput());
         } catch (Exception e) {
             LOG.debug("e.getMessage()=" + e.getMessage());
             throw new CommandRunnerException("Error running command: " + e.getMessage());
@@ -108,6 +106,17 @@ public class CommandRunner {
                 return null;
             }
         }
+    }
+
+    public String getTrimmedOutput() {
+        String output = "";
+        if (stdoutOutput != null && stdoutOutput.trim().length() > 0) {
+            output += "STDOUT[" + stdoutOutput.trim() + "] ";
+        }
+        if (stderrOutput != null && stderrOutput.trim().length() > 0) {
+            output += "STDERR[" + stderrOutput.trim() + "] ";
+        }
+        return output.trim();
     }
 
 }

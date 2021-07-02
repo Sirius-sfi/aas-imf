@@ -71,8 +71,8 @@ COPY ${JAR_FILE} /webservice.jar
 #
 ENTRYPOINT [ \
   "java","-jar","/webservice.jar" \
-  ,"--logging.level.root=WARN" \
-  ,"--logging.level.com.aibel.mel.mel2aas=DEBUG" \
+  ,"--logging.level.root=INFO" \
+  ,"--logging.level.com.aibel.mel.mel2aas=INFO" \
   ,"--logging.file.path=/var/log/melws" \
   ,"--management.endpoints.enabled-by-default=true" \
   ,"--management.endpoints.web.exposure.include=*" \

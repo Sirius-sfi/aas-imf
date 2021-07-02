@@ -126,7 +126,7 @@ public class MelToCsv {
             for (char removeChar : REMOVE_HEADING_CHAR) {
                 val = val.replace("" + removeChar, "");
             }
-//            log.debug("val after remove char: " + val);
+//            log.debug("val after removeAllWithSameUuid char: " + val);
             for (String[] replacePair : REPLACE_HEADING_STR) {
                 val = val.replace(replacePair[0], replacePair[1]);
             }

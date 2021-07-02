@@ -1,12 +1,15 @@
 package com.aibel.mel.mel2aas.spring.storage;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 public class FileHandle {
@@ -78,9 +81,13 @@ public class FileHandle {
         return fullPath.substring(0, index);
     }
 
-    public Resource asResource() {
+    public Resource asResource() throws IOException {
         LOG.debug("this=" + this.toString());
-        return new FileSystemResource(file);
+        return new ByteArrayResource(FileUtils.readFileToByteArray(file));
+    }
+
+    public MediaType getMediaType() {
+        return fileType.getMediaType();
     }
 
 }
